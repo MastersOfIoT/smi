@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  script(type="text/javascript", src="/js/utils.js")
+  div(class="panel panel-default")
+    div(class="panel-heading")
+      h3(class="panel-title") Network Status
+
+    div(class="panel-body")
+      p Ping a host to verify network connectivity.
+      div(class="col-lg-6")
+        div(class="input-group")
+          span(class="input-group-btn")
+            button(class="btn btn-default", type="button" onclick="networkCheck()") Ping
+          input(id="network-check-host", type="text", class="form-control", placeholder="localhost")
+
+      div(class="col-lg-6", id="network-check-result-container", style="display: none;")
+        div(class="panel panel-default")
+          div(class="panel-body")
+            pre
+              code(id="network-check-result-text")
+
+  div(class="panel panel-default")
+    div(class="panel-heading")
+      h3(class="panel-title") System Status
+
+    div(class="panel-body")
+      p Check system logs for possible errors.
+      div(class="col-lg-6")
+        div(class="input-group")
+          span(class="input-group-btn")
+            button(class="btn btn-default", type="button" onclick="viewLog()") View log
+          select(id="log-name", class="form-control")
+            option(value="boot") Boot log
+            option(value="dmesg") Kernel log
+            option(value="mosquitto.log") Mosquitto log
+
+      div(class="col-lg-6", id="log-container", style="display: none;")
+        div(class="panel panel-default")
+          div(class="panel-body")
+            pre
+              code(id="log-text")

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  for msg in messages
+    div(class="alert alert-danger" role="alert")= msg
+
+  form(class="form-signin", action="/login", method="post")
+    p
+      input(class="form-control", type="text", name="username", placeholder="Username")
+    p
+      input(class="form-control", type="password", name="password", placeholder="Password")
+    p
+      input(class="btn btn-lg btn-primary btn-block", type="submit", value="Log in")
